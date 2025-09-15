@@ -23,11 +23,11 @@ public class player_Controls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * player_Speed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * player_Speed, rb.linearVelocity.y);
 
         if (Input.GetKey(KeyCode.Space) && isGrounded) 
         {
-            rb.velocity = new Vector2(rb.velocity.x, jump_Height);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jump_Height);
         }
 
         //  Checking for Grounded Player

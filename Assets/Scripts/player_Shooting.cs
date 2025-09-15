@@ -37,7 +37,7 @@ public class player_Shooting : MonoBehaviour
             bulletClone.transform.position = firePoint.position;
             bulletClone.transform.rotation = Quaternion.Euler(0,0,thetaVal);
 
-            bulletClone.GetComponent<Rigidbody2D>().velocity = firePoint.right * bulletSpeed;
+            bulletClone.GetComponent<Rigidbody2D>().linearVelocity = firePoint.right * bulletSpeed;
             Destroy(bulletClone, bulletLife);
         }
     }
