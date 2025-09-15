@@ -23,7 +23,9 @@ public class player_Controls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * player_Speed, rb.linearVelocity.y);
+        // rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * player_Speed, rb.linearVelocity.y);
+
+        horizontalMotion();
 
         if (Input.GetKey(KeyCode.Space) && isGrounded) 
         {
@@ -38,17 +40,33 @@ public class player_Controls : MonoBehaviour
     }
 
 
-    void OnCollisionEnter2D(Collision2D collision)
+    // Player horizontal movement controller
+
+    void horizontalMotion () 
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if(Input.GetAxis("Horizontal") != 0 && isGrounded)
         {
+            rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * player_Speed, rb.linearVelocity.y);
+        }
+
+    }
+
+    // Enter trigger-based collision for ground Check.
+    // If trigger hits material w/ ground tag, set bool isGrounded true.
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("GameObject1 collided with " + other.name);
             isGrounded = true;    
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    // Exit trigger-based collision for ground Check.
+    // If trigger no longer hits material w/ ground tag, set bool isGrounded false.
+    void OnTriggerExit2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
         }
