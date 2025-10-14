@@ -1,9 +1,11 @@
 using UnityEngine;
 
 public class pauseMenuController : MonoBehaviour
-{
-    public GameObject pausePanel;
-    private bool pausedGame;
+{   
+    public GameObject pausePanel; // defines gameobject for pause panel;
+    private bool pausedGame; // boolean for determining pause state
+
+    // on awake, sets pause to false and timescale to standard speed
     void Awake()
     {
         Time.timeScale = 1f;
@@ -11,6 +13,8 @@ public class pauseMenuController : MonoBehaviour
     }
 
     // Update is called once per frame
+    // When pressing P and pauseGame is in different states
+    // runs either pauseGame() or resumeGame().
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) && pausedGame == false)
@@ -25,6 +29,9 @@ public class pauseMenuController : MonoBehaviour
         }
     }
 
+    // Sets the pause panel to active
+    // sets boolean to true 
+    // sets timescale to 0
     void pauseGame() 
     {
         pausePanel.SetActive(true);
@@ -33,6 +40,9 @@ public class pauseMenuController : MonoBehaviour
         
     }
 
+    // Sets pause panel to inactive
+    // sets boolean to false
+    // set timescale to 1 
     void resumeGame()
     {
         pausePanel.SetActive(false);

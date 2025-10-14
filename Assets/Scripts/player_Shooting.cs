@@ -16,13 +16,9 @@ public class player_Shooting : MonoBehaviour
 
     public warpPlayer currentProjectile;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    // points the gameobject to the cursor
+    // grabs an angle for rotational point
+    // rotates firePoint object
     void Update()
     {
         pointingDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -38,6 +34,9 @@ public class player_Shooting : MonoBehaviour
         }
     }
 
+    // checks for left click and if there's no bullet
+    // if true, instantate bulletClone at firepoint position
+    // 
     void fireBullet() 
     {
         if (Input.GetMouseButtonDown(0) && currentProjectile == null)

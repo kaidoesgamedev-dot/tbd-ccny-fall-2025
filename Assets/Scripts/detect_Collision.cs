@@ -7,18 +7,9 @@ public class detect_Collision : MonoBehaviour
 
     public GameObject bullet;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Logic to determine if the bullet has collided with
+    // the ground or wall to immediately destroy
+    // instantiated target
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Wall"))

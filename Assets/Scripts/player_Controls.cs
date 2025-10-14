@@ -22,18 +22,14 @@ public class player_Controls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>(); //Get the object rigidbody
     }
 
     // Update is called once per frame
     void Update()
     {
-        // rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * player_Speed, rb.linearVelocity.y);
-
-        //horizontalMotion();
-
-        Debug.Log(air_Control);
-        
+        // checks if grounded, and if the answer is yes, run horizontalMotion
+        // if not, and in air, run horizontalMotion
         if(isGrounded) 
         {
             horizontalMotion();
@@ -45,7 +41,9 @@ public class player_Controls : MonoBehaviour
         }
 
 
-
+        // checking if grounded and space is pressed
+        // perform a jump using the jump height
+        // set air control to 1
         if (Input.GetKey(KeyCode.Space) && isGrounded) 
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jump_Height);
@@ -64,7 +62,11 @@ public class player_Controls : MonoBehaviour
     // Player horizontal movement controller
 
     void horizontalMotion () 
-    {
+    {   
+        // if input is on Horizontal Axis and is grounded
+        // move player at player_Speed value
+        // if not grounded
+        // move player at air_Speed value
         if(Input.GetAxis("Horizontal") != 0 && isGrounded)
         {
             rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * player_Speed, rb.linearVelocity.y);
@@ -87,6 +89,8 @@ public class player_Controls : MonoBehaviour
             air_Control = 0;
         }
 
+        // if target hits the gameWin object, load win scene
+        // from scene manager in build setings
         if (other.gameObject.CompareTag("gameWin"))
         {
             SceneManager.LoadSceneAsync(3);
