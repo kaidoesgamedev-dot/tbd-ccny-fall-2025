@@ -258,9 +258,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   destination: {fileID: 8812226179296242892, guid: 862c6138dde12f94f9b599c2c530c722, type: 3}
-  player_Speed: 15
+  player_Speed: 10
   jump_Height: 7
-  air_Speed: 5
+  air_Speed: 10
 --- !u!61 &1298311299256169738
 BoxCollider2D:
   m_ObjectHideFlags: 0
